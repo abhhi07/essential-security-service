@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional security services for businesses, homes, and events. Your safety is our priority.">
+    <meta name="keywords" content="security services, event security, residential guards, corporate security">
     <title>Security Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
@@ -18,10 +20,30 @@
             chatButton.style.borderRadius = "5px";
             chatButton.style.cursor = "pointer";
             chatButton.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.2)";
+            chatButton.style.transition = "transform 0.3s, background 0.3s";
             chatButton.onclick = function() {
                 alert("Chat feature coming soon!");
             };
+            chatButton.onmouseenter = function() {
+                chatButton.style.transform = "scale(1.1)";
+                chatButton.style.background = "#e6b800";
+            };
+            chatButton.onmouseleave = function() {
+                chatButton.style.transform = "scale(1)";
+                chatButton.style.background = "gold";
+            };
             document.body.appendChild(chatButton);
+
+            // Handle subscription form submission
+            document.getElementById("subscribe-form").onsubmit = function(event) {
+                event.preventDefault(); // Prevent form submission
+                var email = document.getElementById("subscribe-email").value;
+                if (email) {
+                    // Simulate a successful subscription
+                    document.getElementById("subscribe-form").style.display = "none";
+                    document.getElementById("subscribe-success").style.display = "block";
+                }
+            };
         };
     </script>
     <style>
@@ -37,7 +59,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 100vh;
+            min-height: 100vh;
         }
         .navbar {
             background: black;
@@ -46,6 +68,12 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+        .navbar img {
+            height: 50px;
+            margin-left: 20px;
         }
         .navbar a {
             color: gold;
@@ -53,6 +81,10 @@
             margin: 0 20px;
             font-size: 18px;
             font-weight: 500;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #e6b800;
         }
         .banner {
             background: black;
@@ -88,6 +120,11 @@
             text-align: center;
             width: 200px;
             color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         .feature i {
             font-size: 40px;
@@ -106,30 +143,248 @@
             cursor: pointer;
             margin: 20px auto;
             display: block;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
         }
         button:hover {
             background-color: #e6b800;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(230, 184, 0, 0.4);
+        }
+        footer {
+            background: black;
+            padding: 40px 20px;
+            margin-top: auto;
+            border-top: 2px solid gold;
+        }
+        footer .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        footer .footer-section {
+            text-align: left;
+        }
+        footer .footer-section h3 {
+            color: gold;
+            margin-bottom: 15px;
+        }
+        footer .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+            transition: color 0.3s;
+        }
+        footer .footer-section a:hover {
+            color: #e6b800;
+        }
+        footer .footer-section p {
+            margin: 5px 0;
+        }
+        footer .footer-section .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        footer .footer-section .social-icons a {
+            color: gold;
+            font-size: 24px;
+            transition: color 0.3s, transform 0.3s;
+        }
+        footer .footer-section .social-icons a:hover {
+            color: #e6b800;
+            transform: scale(1.2);
+        }
+        footer .footer-section .subscribe-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        footer .footer-section .subscribe-form input {
+            padding: 10px;
+            border: 1px solid gold;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            flex: 1;
+        }
+        footer .footer-section .subscribe-form input:focus {
+            outline: none;
+            border-color: #e6b800;
+        }
+        footer .footer-section .subscribe-form button {
+            background-color: gold;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        footer .footer-section .subscribe-form button:hover {
+            background-color: #e6b800;
+            transform: scale(1.1);
+        }
+        footer .footer-section .subscribe-success {
+            display: none;
+            color: gold;
+            margin-top: 15px;
+        }
+        footer .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        footer .footer-bottom a {
+            color: gold;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer .footer-bottom a:hover {
+            color: #e6b800;
+        }
+        .booking-form {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 30px;
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid gold;
+            margin: 40px auto;
+        }
+        .booking-form h2 {
+            color: gold;
+            margin-bottom: 20px;
+        }
+        .booking-form label {
+            display: block;
+            margin: 10px 0 5px;
+            color: gold;
+            text-align: left;
+        }
+        .booking-form input, .booking-form select, .booking-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid gold;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: border-color 0.3s;
+        }
+        .booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
+            outline: none;
+            border-color: #e6b800;
+        }
+        .booking-form button {
+            background-color: gold;
+            color: black;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+        }
+        .booking-form button:hover {
+            background-color: #e6b800;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(230, 184, 0, 0.4);
+        }
+        .reviews {
+            background: black;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+        .reviews h2 {
+            color: gold;
+            margin-bottom: 30px;
+        }
+        .review-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .review-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .review-card h3 {
+            color: gold;
+            margin-bottom: 10px;
+        }
+        .review-card p {
+            font-style: italic;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .navbar a {
+                font-size: 16px;
+                margin: 0 10px;
+            }
+            .container, .booking-form {
+                padding: 30px;
+                width: 90%;
+            }
+            .features, .review-cards {
+                gap: 20px;
+                padding: 20px;
+            }
+            .feature, .review-card {
+                width: 100%;
+                max-width: 250px;
+            }
+            footer .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            footer .footer-section {
+                text-align: center;
+            }
+            footer .footer-section .subscribe-form {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
+    <header class="navbar">
+        <img src="Logo.jpg" alt="Security Logo">
         <a href="#">Home</a>
         <a href="#">Services</a>
         <a href="#">About Us</a>
         <a href="#">Contact</a>
         <a href="#">Get a Quote</a>
-    </div>
+    </header>
     
     <div class="banner">
         <h2>Your Safety, Our Priority</h2>
     </div>
     
-    <div class="container">
+    <main class="container">
         <h1>Professional Security Services</h1>
         <p>Providing reliable security solutions for businesses, homes, and events.</p>
-        <button>Book a Security Guard</button>
-    </div>
+        <button>Get a Quote</button>
+    </main>
 
     <div class="features">
         <div class="feature">
@@ -148,5 +403,96 @@
             <p>Providing security solutions for businesses and corporate offices.</p>
         </div>
     </div>
+
+    <!-- Booking Form Section -->
+    <div class="booking-form">
+        <h2>Book Our Services</h2>
+        <form action="#" method="post">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="service">Select Service:</label>
+            <select id="service" name="service" required>
+                <option value="event">Event Security</option>
+                <option value="residential">Residential Guards</option>
+                <option value="corporate">Corporate Security</option>
+            </select>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="message">Additional Information:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+
+            <button type="submit">Submit Booking</button>
+        </form>
+    </div>
+
+    <!-- Client Reviews Section -->
+    <div class="reviews">
+        <h2>What Our Clients Say</h2>
+        <div class="review-cards">
+            <div class="review-card">
+                <h3>Rajesh Kumar</h3>
+                <p>"The security team was very professional and reliable. Highly recommended for any event!"</p>
+            </div>
+            <div class="review-card">
+                <h3>Priya Sharma</h3>
+                <p>"Excellent service! They made our corporate office feel safe and secure at all times."</p>
+            </div>
+            <div class="review-card">
+                <h3>Anil Patel</h3>
+                <p>"Great experience with their residential security services. Very responsive and trustworthy."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@securityservices.com</p>
+                <p>Phone: +91 12345 67890</p>
+                <p>Address: 123 Security Lane, Mumbai, India</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Subscribe for Updates</h3>
+                <form id="subscribe-form" class="subscribe-form">
+                    <input type="email" id="subscribe-email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div id="subscribe-success" class="subscribe-success">
+                    Thank you for subscribing!
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Security Services. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
